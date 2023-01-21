@@ -36,23 +36,29 @@ def add_time(start, duration, day = "today"):
   elif day_count > 0:
     day_string = f"({day_count} days later)"
 
-  day_low = day.lower()
+  day_lwr = day.lower()
   days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-  if day_low == "today":
+
+  if day_lwr == "today":
     pass
   else:
-    day_index = days.index(day_low)
-    new_day = days[day_index + day_count].capitalize()
-  
+    day_index = days.index(day_lwr)
+    new_day_count = day_count + day_index
+    if new_day_count > 6:
+      new_day_count = new_day_count // 6
+        
+  new_day = days[new_day_count].capitalize()
+      
   hour = str(new_hour).zfill(2)
   minute = str(new_minute).zfill(2)
   time = hour + ':' + minute + ' ' + new_clock
   
-  if day_low == "today":
-    output = time + ' ' + day_string
+  if day_lwr == "today":
+    new_time = time + ' ' + day_string
   else:
-    output = time + ', ' + new_day + ' ' + day_string
+    new_time = time + ', ' + new_day + ' ' + day_string
   
-  print(output)
+  print(new_time)
+  return new_time
 
-add_time("11:06 PM", "23:55", "Tuesday")
+add_time("11:03 PM", "25:30", "sunday")
