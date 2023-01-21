@@ -28,16 +28,15 @@ def add_time(start, duration, day = "Today"):
   # print("hour", new_hour)
 
   new_day = 0
-  if new_hour > 23:
+  if new_hour > 23 and new_hour != 24:
     new_hour -= 24
-    # bug in this code?  need to get midnight to list as 12:00 AM
     new_day += 1
 
-  print("hour", new_hour)
-  # print("day", new_day)
+  print("new hour", new_hour)
+  print("day", new_day)
   
   new_clock = ""
-  if new_hour > 0 and new_hour < 12:
+  if new_hour == 24 or (0 < new_hour < 12):
     new_clock = "AM"
   else:
     new_clock = "PM"
@@ -45,8 +44,7 @@ def add_time(start, duration, day = "Today"):
   if new_hour > 12:
     new_hour -= 12
   
-
   print("new clock", new_clock)
   print("new hour", new_hour)
 
-add_time("11:06 PM", "0:54")
+add_time("10:06 AM", "0:55")
