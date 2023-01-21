@@ -28,7 +28,7 @@ def add_time(start, duration, day = "Today"):
   # print("minute", new_minute)
   # print("hour", new_hour)
 
-  new_day = new_hour // 24
+  day_count = new_hour // 24
   new_hour = new_hour % 24
 
   # print("new hour", new_hour)
@@ -53,6 +53,14 @@ def add_time(start, duration, day = "Today"):
   time = hour + ':' + minute + ' ' + new_clock
   
   print(time)
+  
+  day_string = ""
+  if day_count == 1:
+    day_string = "(next day)"
+  elif day_count > 0:
+    day_string = f"({day_count} days later"
+
+  print(day_string)
 
 
 add_time("11:06 PM", "0:55")
