@@ -46,8 +46,7 @@ def add_time(start, duration, day = "today"):
     new_day_count = day_count + day_index
     if new_day_count > 6:
       new_day_count = new_day_count // 6
-        
-  new_day = days[new_day_count].capitalize()
+    new_day = days[new_day_count].capitalize()
       
   hour = str(new_hour).zfill(2)
   minute = str(new_minute).zfill(2)
@@ -58,7 +57,5 @@ def add_time(start, duration, day = "today"):
   else:
     new_time = time + ', ' + new_day + ' ' + day_string
   
-  print(new_time)
-  return new_time
+    return new_time
 
-add_time("11:03 PM", "25:30", "sunday")
