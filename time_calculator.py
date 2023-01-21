@@ -43,19 +43,20 @@ def add_time(start, duration, day = "today"):
     pass
   else:
     day_index = days.index(day_lwr)
-    new_day_count = day_count + day_index
-    if new_day_count > 6:
-      new_day_count = new_day_count // 6
-    new_day = days[new_day_count].capitalize()
+    new_index = day_count + day_index
+    if new_index > 6:
+      new_index = new_index % 7 
+    new_day = days[new_index].capitalize()
       
-  hour = str(new_hour).zfill(2)
+  hour = str(new_hour)
   minute = str(new_minute).zfill(2)
   time = hour + ':' + minute + ' ' + new_clock
+
+  spacer = ' ' if day_string != '' else ''
   
   if day_lwr == "today":
-    new_time = time + ' ' + day_string
+    new_time = time + spacer + day_string
   else:
-    new_time = time + ', ' + new_day + ' ' + day_string
+    new_time = time + ', ' + new_day + spacer + day_string
   
-    return new_time
-
+  return new_time
