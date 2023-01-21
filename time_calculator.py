@@ -24,24 +24,25 @@ def add_time(start, duration, day = "Today"):
   if new_minute > 59:
     new_minute -= 60
     new_hour += 1
+  
   # print("minute", new_minute)
   # print("hour", new_hour)
 
-  new_day = 0
-  if new_hour > 23 and new_hour != 24:
-    new_hour -= 24
-    new_day += 1
+  new_day = new_hour // 24
+  new_hour = new_hour % 24
 
   # print("new hour", new_hour)
-  # print("day", new_day)
+  # print("new day", new_day)
   
   new_clock = ""
-  if new_hour == 24 or (0 < new_hour < 12):
+  if new_hour == 24 or (0 <= new_hour < 12):
     new_clock = "AM"
   else:
     new_clock = "PM"
   
-  if new_hour > 12:
+  if new_hour == 0:
+    new_hour = 12
+  elif new_hour > 12:
     new_hour -= 12
   
   # print("new clock", new_clock)
@@ -49,7 +50,9 @@ def add_time(start, duration, day = "Today"):
 
   hour = str(new_hour).zfill(2)
   minute = str(new_minute).zfill(2)
-  output = hour + ':' + minute + ' ' + new_clock
-  print(output)
+  time = hour + ':' + minute + ' ' + new_clock
+  
+  print(time)
 
-add_time("10:06 AM", "0:55")
+
+add_time("11:06 PM", "0:55")
